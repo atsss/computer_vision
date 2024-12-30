@@ -1,4 +1,4 @@
-FROM python:3.13 as build
+FROM python:3.13-slim as build
 
 # Copy requirements.txt first for better cache on later pushes
 COPY requirements.txt requirements.txt
@@ -10,14 +10,14 @@ RUN pip install --upgrade pip
 # Install project requirements
 RUN pip install --user -r requirements.txt
 
-FROM python:3.13
+FROM python:3.13-slim
 
 # Install dependencies, including graphics libraries
 RUN apt-get update &&  apt-get install -y python3-opencv
 
 WORKDIR /app
 
-COPY --from=build /root/.local /root/.local
+COPY --from=build /root/.local /root/
 
 # Set the imported python dependencies on PATH
 ENV PATH=/root/.local/bin:$PATH
