@@ -17,7 +17,7 @@ RUN apt-get update &&  apt-get install -y python3-opencv
 
 WORKDIR /app
 
-COPY --from=build /root/.local /root/
+COPY --from=build /root/.local/ /root/.local/
 
 # Set the imported python dependencies on PATH
 ENV PATH=/root/.local/bin:$PATH
