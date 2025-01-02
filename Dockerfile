@@ -15,7 +15,7 @@ FROM python:3.13-slim
 # Install dependencies, including graphics libraries
 RUN apt-get update &&  apt-get install -y python3-opencv
 
-WORKDIR /app
+WORKDIR /usr/src
 
 COPY --from=build /root/.local/ /root/.local/
 
