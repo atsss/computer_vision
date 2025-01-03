@@ -50,6 +50,7 @@ for i in range(0, detections.shape[2]):
         # object
         box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
         (startX, startY, endX, endY) = box.astype("int")
+        print(f"Dtection: {startX}, {startY}, {endX}, {endY}, {confidence}")
 
         # draw the bounding box of the face along with the associated
         # probability
@@ -61,5 +62,5 @@ for i in range(0, detections.shape[2]):
         )
 
 # show the output image
-cv2.imshow("Output", image)
-cv2.waitKey(0)
+# cv2.imshow("Output", image)
+# cv2.waitKey(0)
